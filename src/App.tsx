@@ -2,12 +2,17 @@ import { useState } from "react";
 import Star from "./components/Star";
 
 function App() {
-  const [ratingValue, setRatingValue] = useState<number>(-1);
+  const [ratingHoverValue, setHoverRatingValue] = useState<number | null>(null);
+  const [ratingValue, setRatingValue] = useState<number | null>(null);
+
+  const handleStarHover = (starValue: number | null): void => {
+    setHoverRatingValue(starValue);
+  };
 
   const handleStarClick = (
     e: React.MouseEvent<HTMLButtonElement>,
     starValue: number
-  ) => {
+  ): void => {
     e.preventDefault();
     setRatingValue(starValue);
   };
@@ -19,10 +24,14 @@ function App() {
 
         <div className="flex justify-center gap-3 mt-4">
           {Array.from({ length: 5 }, (_, index: number) => {
-            const isLargerThanRating: boolean = ratingValue >= index;
+            const isLargerThanRating: boolean =
+              ratingHoverValue !== null
+                ? ratingHoverValue >= index
+                : ratingValue !== null && ratingValue >= index;
             return (
               <Star
                 handleStarClick={handleStarClick}
+                handleStarHover={handleStarHover}
                 isSelected={isLargerThanRating}
                 key={index}
                 starValue={index}

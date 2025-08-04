@@ -1,18 +1,29 @@
 import React from "react";
 
 interface StarProps {
-  starValue: number,
+  starValue: number;
   isSelected?: boolean;
-  handleStarClick(e: React.MouseEvent<HTMLButtonElement>, starValue: number): void
+  handleStarClick(
+    e: React.MouseEvent<HTMLButtonElement>,
+    starValue: number
+  ): void;
+  handleStarHover(
+    starValue: number | null
+  ): void;
 }
 
-const Star = ({ starValue, isSelected, handleStarClick }: StarProps) => {
+const Star = ({ starValue, isSelected, handleStarClick, handleStarHover }: StarProps) => {
   const defaultFill: string = "#FFFFFF";
   const defaultBorder: string = "#3153FF";
   const selectedFill: string = defaultBorder;
 
   return (
-    <button className="cursor-pointer" onClick={(e) => handleStarClick(e, starValue)}>
+    <button
+      className="cursor-pointer"
+      onMouseEnter={() => handleStarHover(starValue)}
+      onMouseLeave={() => handleStarHover(null)}
+      onClick={(e) => handleStarClick(e, starValue)}
+    >
       <svg
         className="h-12"
         viewBox="0 -0.5 33 33"
