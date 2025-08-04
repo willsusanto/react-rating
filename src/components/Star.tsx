@@ -1,12 +1,18 @@
+import React from "react";
+
 interface StarProps {
-  fillColor?: string;
+  starValue: number,
+  isSelected?: boolean;
+  handleStarClick(e: React.MouseEvent<HTMLButtonElement>, starValue: number): void
 }
 
-const Star = ({ fillColor }: StarProps) => {
+const Star = ({ starValue, isSelected, handleStarClick }: StarProps) => {
   const defaultFill: string = "#FFFFFF";
   const defaultBorder: string = "#3153FF";
+  const selectedFill: string = defaultBorder;
 
   return (
+    <button className="cursor-pointer" onClick={(e) => handleStarClick(e, starValue)}>
       <svg
         className="h-12"
         viewBox="0 -0.5 33 33"
@@ -24,7 +30,7 @@ const Star = ({ fillColor }: StarProps) => {
           <g
             id="Vivid-Icons"
             transform="translate(-903.000000, -411.000000)"
-            fill={fillColor ?? defaultFill}
+            fill={isSelected ? selectedFill : defaultFill}
           >
             <g id="Icons" transform="translate(37.000000, 169.000000)">
               <g id="star" transform="translate(858.000000, 234.000000)">
@@ -36,6 +42,7 @@ const Star = ({ fillColor }: StarProps) => {
           </g>
         </g>
       </svg>
+    </button>
   );
 };
 
