@@ -1,6 +1,8 @@
 import { useState } from "react";
 import Star from "./components/Star";
 
+const TOTAL_STARS = 5;
+
 function App() {
   const [ratingHoverValue, setHoverRatingValue] = useState<number | null>(null);
   const [ratingValue, setRatingValue] = useState<number | null>(null);
@@ -23,7 +25,7 @@ function App() {
         <h1 className="font-bold text-2xl text-center">Rating</h1>
 
         <div className="flex justify-center gap-3 mt-4">
-          {Array.from({ length: 5 }, (_, index: number) => {
+          {Array.from({ length: TOTAL_STARS }, (_, index: number) => {
             const isLargerThanRating: boolean =
               ratingHoverValue !== null
                 ? ratingHoverValue >= index
