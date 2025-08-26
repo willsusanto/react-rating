@@ -19,7 +19,7 @@ const Star: React.FC<StarProps> = ({ starValue, isSelected, handleStarClick, han
       onClick={(e) => handleStarClick(e, starValue)}
     >
       <svg
-        className="h-12"
+        className="h-12 mx-2"
         viewBox="0 -0.5 33 33"
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
