@@ -2,6 +2,7 @@ import React from "react";
 
 interface StarProps {
   starValue: number;
+  starColor: string;
   isSelected?: boolean;
   handleStarClick: (
     e: React.MouseEvent<HTMLButtonElement>,
@@ -10,7 +11,7 @@ interface StarProps {
   handleStarHover: (starValue: number | null) => void;
 }
 
-const Star: React.FC<StarProps> = ({ starValue, isSelected, handleStarClick, handleStarHover }) => {
+const Star: React.FC<StarProps> = ({ starValue, starColor, isSelected, handleStarClick, handleStarHover }) => {
   return (
     <button
       className="cursor-pointer"
@@ -28,14 +29,14 @@ const Star: React.FC<StarProps> = ({ starValue, isSelected, handleStarClick, han
         <defs></defs>
         <g
           id="Vivid.JS"
-          stroke="#3153FF"
+          stroke={starColor}
           strokeWidth="1"
           fillRule="evenodd"
         >
           <g
             id="Vivid-Icons"
             transform="translate(-903.000000, -411.000000)"
-            fill={isSelected ? "#3153FF" : "#FFFFFF"}
+            fill={isSelected ? starColor : "#FFFFFF"}
           >
             <g id="Icons" transform="translate(37.000000, 169.000000)">
               <g id="star" transform="translate(858.000000, 234.000000)">
